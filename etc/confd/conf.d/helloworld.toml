@@ -1,6 +1,6 @@
 [template]
 src = "helloworld.conf.tmpl"
-dest = "/etc/nginx/conf.d/helloworld.conf"
+dest = "/etc/nginx/conf.d/hello-80_discovered_via_etcd.conf"
 keys = [
     "/cluster_alpha/hello-80",
 ]

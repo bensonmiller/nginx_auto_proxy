@@ -19,4 +19,4 @@ ADD etc/confd /etc/confd
 
 EXPOSE 80
 
-ENTRYPOINT ['/usr/local/bin/confd-watch']
+ENTRYPOINT ["/usr/local/bin/confd-watch"]
