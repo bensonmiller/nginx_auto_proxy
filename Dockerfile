@@ -17,4 +17,6 @@ RUN chmod 755 /usr/local/bin/confd*
 ADD etc/nginx/nginx.conf /etc/nginx/nginx.conf
 ADD etc/confd /etc/confd
 
-EXPOSE 80 443
+EXPOSE 80
+
+ENTRYPOINT ['/usr/local/bin/confd-watch']
