@@ -1,0 +1,13 @@
+[template]
+src = "nginx.conf.tmpl"
+dest = "/etc/nginx/conf.d/hello.conf"
+keys = [
+    "/cluster_alpha/hello-80",
+]
+
+owner = "root"
+mode = "0644"
+
+check_cmd = "/usr/sbin/nginx -t"
+reload_cmd = "kill -HUP $(cat /var/run/nginx/nginx.pid)"
+
