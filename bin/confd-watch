@@ -6,6 +6,7 @@ export ETCD_PORT=${ETCD_PORT:-4001}
 export HOST_IP=${HOST_IP:-172.17.42.1}
 export ETCD=http://${HOST_IP}:${ETCD_PORT}
 export APP_NAME=${APP_NAME:-default}
+export DEBUG=${true:-false}
 
 echo "[nginx] booting container. ETCD: $ETCD"
 

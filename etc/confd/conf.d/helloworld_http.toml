@@ -1,8 +1,8 @@
 [template]
-src = "helloworld.conf.tmpl"
-dest = "/etc/nginx/conf.d/hello-80_discovered_via_etcd.conf"
+src = "helloworld_http.conf.tmpl"
+dest = "/etc/nginx/conf.d/helloworld_http.conf"
 keys = [
-    "/cluster_alpha/hello-80",
+    "/cluster_alpha/helloworld_http",
 ]
 
 owner = "root"
@@ -10,4 +10,3 @@ mode = "0644"
 
 check_cmd = "/usr/sbin/nginx -t"
 reload_cmd = "kill -HUP $(cat /var/run/nginx/nginx.pid)"
-

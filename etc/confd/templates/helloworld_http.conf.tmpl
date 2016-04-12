@@ -1,5 +1,5 @@
 upstream service_pool {
-{{ range getvs "/cluster_alpha/hello-80/*" -}}
+{{ range getvs "/cluster_alpha/helloworld_http/*" -}}
 {{"    "}}server {{ . }};
 {{ end -}}
 }
