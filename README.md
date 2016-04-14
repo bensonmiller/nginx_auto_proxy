@@ -1,5 +1,7 @@
 # nginx_auto_proxy
-Experimentations using nginx and etcd to create automatically-configured service proxies
+Experimentations using Nginx and etcd and Consul to create automatically-configured service proxies
+
+The Consul configuration is found in the 'consul' branch. I will merge these into a sane config at some point in the future, with different Dockerfiles. For the time being, please help yourself to the Consul branch if you're not running etcd.
 
 # TL;DR
 This project is based on Kelsey Hightower's terrific confd project (https://github.com/kelseyhightower/confd) and was informed by [this](https://www.digitalocean.com/community/tutorials/how-to-use-confd-and-etcd-to-dynamically-reconfigure-services-in-coreos) document from Digital Ocean on nginx/etcd/confd integration. Instead of using Ubuntu base image, this Dockerfile is built on a lightweight Alpine Linux image.
