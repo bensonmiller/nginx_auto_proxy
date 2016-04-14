@@ -2,7 +2,7 @@
 src = "helloworld_http.conf.tmpl"
 dest = "/etc/nginx/conf.d/helloworld_http.conf"
 keys = [
-    "/cluster_alpha/helloworld_http",
+    "/helloworld_http",
 ]
 
 owner = "root"

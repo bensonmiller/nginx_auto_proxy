@@ -1,7 +1,6 @@
 upstream service_pool {
-{{ range getvs "/helloworld_http/*" -}}
-{{"    "}}server {{ . }};
-{{ end -}}
+{{range service "helloworld_http"}}
+{{"    " -}}server {{.Address}}:{{.Port}};{{end}}
 }
 
 server {
