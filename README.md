@@ -2,6 +2,7 @@
 This project represents a Docker container that will create auto-configuring Nginx reverse proxies via integration with Consul. You can find the Consul-related stuff in the `consul` branch. Similar stuff for `etcd` integration (basically deprecated at this point) is available in the `master` branch
 
 After you've built your container,  start it like this:
+
 `docker run -d -P -e MONITORED_SERVICE=<service_name_in_consul> -e CONSUL_PORT=8500 -e HOST_IP=172.17.0.1 <container_name>`
 
 NOTE:
