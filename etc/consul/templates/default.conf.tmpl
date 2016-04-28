@@ -1,7 +1,7 @@
 upstream service_pool {
-{{ range getvs "/helloworld_http/*" -}}
-{{"    "}}server {{ . }};
-{{ end -}}
+{{$svc_name := env "MONITORED_SERVICE" -}}
+{{range service $svc_name}}
+{{"    " -}}server {{.Address}}:{{.Port}};{{end}}
 }
 
 server {

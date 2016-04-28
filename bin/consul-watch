@@ -2,15 +2,15 @@
 
 set -eo pipefail
 
-export CONSUL_PORT=${CONSUL_PORT:-4001}
-export HOST_IP=${HOST_IP:-172.17.42.1}
+export CONSUL_PORT=${CONSUL_PORT:-8500}
+export HOST_IP=${HOST_IP:-172.17.0.1}
 export CONSUL=${HOST_IP}:${CONSUL_PORT}
-export APP_NAME=${APP_NAME:-default}
+export MONITORED_SERVICE=${MONITORED_SERVICE:-default}
 
 echo "[nginx] booting container. CONSUL: $CONSUL"
 
 # Try to make initial configuration every 5 seconds until successful
-until consul-template -consul $CONSUL -template "/etc/consul/templates/${APP_NAME}.conf.tmpl:/etc/nginx/conf.d/${APP_NAME}.conf" -once; do 
+until consul-template -consul $CONSUL -template "/etc/consul/templates/default.conf.tmpl:/etc/nginx/conf.d/${MONITORED_SERVICE}.conf" -once; do 
     echo "[nginx] waiting for consul-template to create initial nginx configuration"
     sleep 5
 done
@@ -26,7 +26,7 @@ echo "[nginx] starting nginx service..."
 sleep 2
 nginxpid=$(cat /var/run/nginx/nginx.pid)
 echo "[consul-template] starting consul-template as a daemon..."
-consul-template -consul $CONSUL -template "/etc/consul/templates/${APP_NAME}.conf.tmpl:/etc/nginx/conf.d/${APP_NAME}.conf:kill -HUP $nginxpid" -retry 10s &
+consul-template -consul $CONSUL -template "/etc/consul/templates/default.conf.tmpl:/etc/nginx/conf.d/${MONITORED_SERVICE}.conf:kill -HUP $nginxpid" -retry 10s &
 echo "[nginx] consul-template is now monitoring consul service registry for changes..."
 
 # Follow the logs to allow the script to continue running
